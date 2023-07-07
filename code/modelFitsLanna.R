@@ -239,7 +239,7 @@ polygon(c(CtR2$x,rev(CtR2$x)), c(CtR2$Min, rev(CtR2$Max)) ,col=rgb(0,1,0, alpha=
 polygon(c(CtR2$x,rev(CtR2$x)), c(CtR2$Mean+CtR2$Sd, rev(CtR2$Mean-CtR2$Sd)) ,col=rgb(0,1,0, alpha=0.5), border="NA")
 lines(CtR2[,1:2], col=rgb(0,1,0))
 points(Cobs, pch=20)
-legend("top", c("Measurements", "TOC, constant inputs", "Fast pool", "Slow pool"), lty=c(NA,1,2,3), 
+legend(x=1975, y=10500, c("Measurements", "TOC, constant inputs", "Fast pool", "Slow pool"), lty=c(NA,1,2,3), 
        pch=c(19, NA, NA, NA), col=c(1,rep(rgb(0,1,0),3)), bty="n")
 legend("topright", c("TOC, variable inputs", "Fast pool", "Slow pool"), lty=c(1,2,3), 
        col=c(rep(rgb(0,0,1),3)), bty="n")
@@ -261,8 +261,8 @@ dev.off()
 
 
 data.frame(Parameter=c("kf", "ks", "alpha_sf", "gamma", "beta"), 
-           Model1=paste(round(bestpars[1:5], 3), "+-", round(parsMCMC[2,1:5], 3)), 
-           Model2=paste(c(round(bestpars2[1:3], 3), NA, round(bestpars2[4], 3)), "+-", c(round(parsMCMC2[2,1:3],3), NA, round(parsMCMC2[2,4], 3)))
+           ModelConst=paste(c(round(bestpars2[1:3], 3), NA, round(bestpars2[4], 3)), "+-", c(round(parsMCMC2[2,1:3],3), NA, round(parsMCMC2[2,4], 3))),
+           ModelVar=paste(round(bestpars[1:5], 3), "+-", round(parsMCMC[2,1:5], 3))
            )
 
 paste("Mean TT (uncertainty): ",round(TT1$meanTransitTime, 2), "(", round(TT1max$meanTransitTime, 2), "--", round(TT1min$meanTransitTime, 2),")")
